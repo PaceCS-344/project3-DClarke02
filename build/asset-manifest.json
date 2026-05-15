@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/project3-DClarke02/static/css/main.107299d5.css",
+    "main.js": "/project3-DClarke02/static/js/main.623b3cd8.js",
+    "static/media/ID.jpeg": "/project3-DClarke02/static/media/ID.4fdd3119a1f3c75d74c1.jpeg",
+    "static/media/Damian Glitch Store.jpeg": "/project3-DClarke02/static/media/Damian Glitch Store.8d2093db02f48f3a914d.jpeg",
+    "static/media/Roshambojpg.jpg": "/project3-DClarke02/static/media/Roshambojpg.4b4b923a47a694d88af6.jpg",
+    "index.html": "/project3-DClarke02/index.html",
+    "main.107299d5.css.map": "/project3-DClarke02/static/css/main.107299d5.css.map",
+    "main.623b3cd8.js.map": "/project3-DClarke02/static/js/main.623b3cd8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.107299d5.css",
+    "static/js/main.623b3cd8.js"
+  ]
+}
