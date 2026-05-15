@@ -24,6 +24,7 @@ function SkillBadge({ label }) {
 
 function ProjectCard({ title, description, tech, link, image }) {
   return (
+    // INTERACTIVE ELEMENT 2: Animated card on hover (CSS handles lift + glow)
     <div className="project-card">
       {image && <img src={image} alt={title} className="project-img" />}
       <h3 className="project-title">{title}</h3>
@@ -53,7 +54,8 @@ function ContactLink({ href, icon, label }) {
 
 // ── Section Components ───────────────────────────────────────────────
 
-function Navbar() {
+// INTERACTIVE ELEMENT 1: Sticky header + Theme switcher button
+function Navbar({ theme, toggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -70,6 +72,9 @@ function Navbar() {
         <NavLink href="#skills">Skills</NavLink>
         <NavLink href="#projects">Projects</NavLink>
         <NavLink href="#contact">Contact</NavLink>
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+          {theme === "dark" ? "☀️" : "🌙"}
+        </button>
       </div>
     </nav>
   );
@@ -89,7 +94,10 @@ function Hero() {
   );
 }
 
+// INTERACTIVE ELEMENT 3: Read More / Read Less expander
 function About() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section id="about" className="section">
       <SectionTitle>About Me</SectionTitle>
@@ -103,11 +111,19 @@ function About() {
             clean, user-focused web experiences. I love bridging design and engineering
             to create things that are both functional and beautiful.
           </p>
-          <p>
-            When I'm not coding, you'll find me Playing Video Games, Building Computers, or exploring new
-            technologies. I'm currently looking for internship and entry-level opportunities
-            in software development.
-          </p>
+          {expanded && (
+            <p className="extra-text">
+              When I'm not coding, you'll find me Playing Video Games, Building Computers, or exploring new
+              technologies. I'm currently looking for internship and entry-level opportunities
+              in software development.
+            </p>
+          )}
+          <button
+            className="read-more-btn"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? "Read Less ▲" : "Read More ▼"}
+          </button>
         </div>
       </div>
     </section>
@@ -220,9 +236,16 @@ function Footer() {
 // ── Root App ─────────────────────────────────────────────────────────
 
 export default function App() {
+  // INTERACTIVE ELEMENT 1: Theme state lives here and is passed down to Navbar
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
   return (
-    <div className="app">
-      <Navbar />
+    <div className={`app ${theme}`}>
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <About />
       <Skills />
@@ -232,4 +255,3 @@ export default function App() {
     </div>
   );
 }
-
